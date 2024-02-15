@@ -1,0 +1,28 @@
+[build-system]
+requires = ["maturin>=1.4,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "struct_perf"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+[project.optional-dependencies]
+tests = ["pytest"]
+dynamic = ["version"]
+
+[tool.maturin]
+python-source = "python"
+features = ["pyo3/extension-module"]
+
+
+[tool.pytest.ini_options]
+addopts = [
+    "--benchmark-sort=mean",
+    "--benchmark-min-rounds=1000",
+    "--benchmark-warmup=on",
+    "--benchmark-warmup-iterations=1000",
+]

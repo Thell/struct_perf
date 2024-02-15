@@ -1,0 +1,22 @@
+[package]
+name = "struct_perf"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "struct_perf"
+crate-type = ["cdylib"]
+
+[profile.release]
+opt-level = 3
+strip = false
+debug = true
+codegen-units = 1
+lto = true
+
+[dependencies]
+lazy_mut = "0.1.0"
+pyo3 = "0.19.0"
+rand = "0.8.5"
+rand_xoshiro = "0.6.0"
